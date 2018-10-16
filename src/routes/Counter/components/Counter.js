@@ -1,16 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'reactstrap';
 
 export const Counter = ({ counter, increment, doubleAsync }) => (
   <div style={{ margin: '0 auto' }} >
     <h2>Counter: {counter}</h2>
-    <button className='btn btn-primary' onClick={increment}>
+    <Button className='btn btn-primary' onClick={increment}>
       Increment
-    </button>
+    </Button>
     {' '}
-    <button className='btn btn-secondary' onClick={doubleAsync}>
+    <Button className='btn btn-secondary mx-4' onClick={doubleAsync}>
       Double (Async)
-    </button>
+    </Button>
   </div>
 )
 Counter.propTypes = {
