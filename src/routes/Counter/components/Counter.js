@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 import { Button } from 'reactstrap'
 import BookList from './BookList'
 import Search from './Search'
+import LichTrinh from './LichTrinh'
+import ViewDetailScreen from './ViewDetailScreen'
+import LogIn from './LogIn'
+import QuanLyTai from './QuanLyTai'
 import './counter.scss'
+
 export const Counter = ({ counter, increment, doubleAsync }) => (
   
   <div style={{ margin: '0 auto' }} >
@@ -17,6 +22,11 @@ export const Counter = ({ counter, increment, doubleAsync }) => (
     </Button> */}
     <Search />
     <BookList />
+    <LichTrinh />
+    <ViewDetailScreen />
+    <LogIn />
+    <QuanLyTai />
+    
     
   </div>
 )
