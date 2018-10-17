@@ -30,11 +30,11 @@ export default class LogIn extends React.Component {
       <Form id="log-in" onSubmit={this.login}>
         <FormGroup>
             <Label for="msnv">Mã Số Nhân Viên</Label>
-            <Input type="text" onChange={this.changeInput} name="text" id="msnv" placeholder="" />
+            <Input type="text" onChange={this.changeInput} name="text" id="msnv" placeholder="T0001, T0002, T0003, T0004" />
         </FormGroup>
         <FormGroup>
             <Label for="msx">Xe</Label>
-            <Input type="text" onChange={this.changeInput} name="text" id="msx" placeholder="" />
+            <Input type="text" onChange={this.changeInput} name="text" id="msx" placeholder="X0001, X0002, X0003, X0004" />
         </FormGroup>
         {err && <p className="text-danger">{err}</p> }
         <Button>Đăng Nhập</Button>
