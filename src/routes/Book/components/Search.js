@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './Search.scss'
+
 export default class Search extends React.Component {
   render() {
     return (

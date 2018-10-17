@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
+
 export default class Detail extends React.Component {
   render() {
     return (
@@ -32,7 +33,7 @@ export default class Detail extends React.Component {
             <Input type="text" name="text" id="endPoit" placeholder="" />
           </Col>
         </FormGroup>
-        
+
         <FormGroup row>
           <Label for="time-date" sm={12}>Thời gian</Label>
           <Col sm={6}>
@@ -45,13 +46,13 @@ export default class Detail extends React.Component {
         <FormGroup row>
           <Label sm={6}>Điểm nhận giữa chuyến</Label>
           <Col sm={6}>
-          <Button className='btn btn-primary' color="warning">Add New</Button>
+            <Button className='btn btn-primary' color="warning">Add New</Button>
           </Col>
         </FormGroup>
         <FormGroup row>
           <Label sm={6}>Điểm trả giữa chuyến</Label>
           <Col sm={6}>
-          <Button className='btn btn-primary' color="warning">Add New</Button>
+            <Button className='btn btn-primary' color="warning">Add New</Button>
           </Col>
         </FormGroup>
         <FormGroup row>

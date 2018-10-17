@@ -20,18 +20,21 @@ class ModalExample extends React.Component {
   }
 
   render() {
+    const { hideFooterButton } = this.props
     return (
       <div>
         <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} size={this.props.size || 'sm'}>
           <ModalHeader toggle={this.toggle}>{this.props.modalTitle || 'Modal title'}</ModalHeader>
           <ModalBody>
             {this.props.children}
           </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>{this.props.submitText || 'Do Something'}</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>{this.props.cancelText || 'Cancel'}</Button>
-          </ModalFooter>
+          {!hideFooterButton &&
+            <ModalFooter>
+              <Button color="primary" onClick={this.props.submit}>{this.props.submitText || 'Do Something'}</Button>{' '}
+              <Button color="secondary" onClick={this.toggle}>{this.props.cancelText || 'Close'}</Button>
+            </ModalFooter>
+          }
         </Modal>
       </div>
     );

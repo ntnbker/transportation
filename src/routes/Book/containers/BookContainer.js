@@ -1,17 +1,16 @@
 import { connectWithLifecycle } from 'react-lifecycle-component'
-import CounterContainer from '../components/Counter'
-import * as counterActions from '../modules/counter'
+import BookDashboardContainer from '../components/BookDashboard'
+import * as bookActions from '../modules/bookTrip'
 
 const mapDispatchToProps = {
-  ...counterActions,
-  increment: () => counterActions.increment(1)
+  ...bookActions,
 }
 const mapStateToProps = (state) => {
   return {
-    ...state,
+    ...state.bookTrip,
   }
 }
 
 export default connectWithLifecycle(
   mapStateToProps, mapDispatchToProps
-)(CounterContainer)
+)(BookDashboardContainer)
