@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { Table, Button } from 'reactstrap'
-
+import './LichTrinh.scss'
 class LichTrinh extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,7 @@ class LichTrinh extends React.Component {
   render() {
     return (
         
-        <Table striped bordered>
+        <Table striped bordered id="lich-trinh">
             <thead className="bg-success">
             <tr>
                 <th>Tên Trạm</th>
@@ -22,7 +22,7 @@ class LichTrinh extends React.Component {
             </tr>
             </thead>
             <tbody>
-                <tr className="table-success">
+                <tr>
                     <td>Tram 1</td>
                     <td>Nhan Hang</td>
                     <td>Xong</td>
@@ -34,7 +34,7 @@ class LichTrinh extends React.Component {
                     <td>Xong</td>
                     <td>Tra 15 bo ban ghe</td>
                 </tr>
-                <tr className="table-success">
+                <tr>
                     <td>Tram 3</td>
                     <td>Nhan Hang</td>
                     <td>Dang</td>

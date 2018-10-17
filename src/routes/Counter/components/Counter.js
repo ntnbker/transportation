@@ -7,7 +7,7 @@ import LichTrinh from './LichTrinh'
 import ViewDetailScreen from './ViewDetailScreen'
 import LogIn from './LogIn'
 import QuanLyTai from './QuanLyTai'
-import './counter.scss'
+
 
 export const Counter = ({ counter, increment, doubleAsync }) => (
   

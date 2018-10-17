@@ -4,6 +4,7 @@
 import React from 'react';
 import { Table, Button } from 'reactstrap'
 import ViewModal from './ViewDetailModal'
+import './BookList.scss'
 class BookList extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,7 @@ class BookList extends React.Component {
   render() {
     return (
         
-        <Table striped bordered>
+        <Table striped bordered id="book-list">
             <thead className="bg-success">
             <tr>
                 <th>Khách Hàng</th>
@@ -24,7 +25,7 @@ class BookList extends React.Component {
             </tr>
             </thead>
             <tbody>
-                <tr className="table-success">
+                <tr>
                     <th scope="row">Võ Duy cận</th>
                     <td>14-12-2018</td>
                     <td>Chờ báo giá</td>
@@ -46,7 +47,7 @@ class BookList extends React.Component {
                         <Button className='btn btn-primary' color="danger">Remove</Button>
                     </td>
                 </tr>
-                <tr className="table-success">
+                <tr>
                     <th scope="row">3</th>
                     <td>@mdo</td>
                     <td>the Bird</td>
