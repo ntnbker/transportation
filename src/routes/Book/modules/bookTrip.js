@@ -5,7 +5,9 @@ const REDUCER_NAME = 'BOOK_TRIP'
 export const BOOK_TRIP_VIEW_DETAIL = `${REDUCER_NAME}_VIEW_DETAIL`
 export const BOOK_TRIP_UPDATE_LIST = `${REDUCER_NAME}_UPDATE_LIST`
 export const BOOK_TRIP_UPDATE_ITEM = `${REDUCER_NAME}_UPDATE_ITEM`
+export const BOOK_TRIP_REMOVE_HIGHLIGHT = `${REDUCER_NAME}_REMOVE_HIGHLIGHT`
 export const BOOK_TRIP_LOGIN_SUCCESS = `${REDUCER_NAME}_LOGIN_SUCCESS`
+export const BOOK_TRIP_LOGOUT = `${REDUCER_NAME}_LOGOUT`
 
 import { getBookList, getBookItem, updateBookItem, login, nextStop } from '../../../api/booking'
 
@@ -19,6 +21,10 @@ import { getBookList, getBookItem, updateBookItem, login, nextStop } from '../..
 
 export const viewDetail = (id) => ({
   type    : BOOK_TRIP_VIEW_DETAIL,
+  payload : id
+})
+export const removeHighlight = (id) => ({
+  type    : BOOK_TRIP_REMOVE_HIGHLIGHT,
   payload : id
 })
 
@@ -68,6 +74,10 @@ export const deviceLogin = (params) => {
   }
 }
 
+export const deviceLogout = () => ({
+  type: BOOK_TRIP_LOGOUT
+})
+
 export const getList = () => {
   return (dispatch, getState) => {
     let list = getBookList()
@@ -113,12 +123,22 @@ const ACTION_HANDLERS = {
     device: state.device && {
       ...state.device,
       [payload.key]: payload.value
-    }
+    },
+    justUpdated: `${payload.id}-${Date.now()}` 
   }),
-  [BOOK_TRIP_LOGIN_SUCCESS] : (state, action) => ({
+  [BOOK_TRIP_LOGIN_SUCCESS] : (state, { payload }) => ({
     ...state,
-    device: action.payload
-  })
+    device: payload,
+    justUpdated: `${payload.id}-${Date.now()}` 
+  }),
+  [BOOK_TRIP_LOGOUT] : (state, action) => ({
+    ...state,
+    device: null
+  }),
+  [BOOK_TRIP_REMOVE_HIGHLIGHT] : (state, { payload }) => ({
+    ...state,
+    justUpdated: payload === state.justUpdated ? null : state.justUpdated
+  }),
 }
 
 // ------------------------------------

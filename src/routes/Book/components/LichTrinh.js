@@ -4,6 +4,7 @@
 import React from 'react';
 import { Table } from 'reactstrap'
 import Modal from '../../../components/modal'
+import { PASSED_CODE } from '../../../api/fakeData'
 import './LichTrinh.scss'
 
 class LichTrinh extends React.Component {
@@ -31,7 +32,7 @@ class LichTrinh extends React.Component {
           </thead>
           <tbody>
             {routes.map((route, key) => (
-              <tr key={key}>
+              <tr key={key} className={route.status === PASSED_CODE ? 'bg-primary' : ''}>
                 <td>{route.name}</td>
                 <td className="text-capitalize">{route.type.replace(/_/g, ' ')}</td>
                 <td>{route.status}</td>

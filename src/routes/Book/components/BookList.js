@@ -17,8 +17,16 @@ class BookList extends React.Component {
     this.props.getList()
   }
 
+  componentWillReceiveProps(props) {
+    if (props.justUpdated) {
+      setTimeout(() => props.removeHighlight(props.justUpdated), 1500)
+    }
+  }
+
   render() {
-    const { list } = this.props
+    const { list, justUpdated } = this.props
+    let updatedId = (justUpdated || '').replace(/\-.*/, '')
+    console.log(updatedId)
     return (
 
       <Table striped bordered id="book-list">
@@ -28,14 +36,14 @@ class BookList extends React.Component {
             <th>Số Xe</th>
             <th>Thời Gian</th>
             <th>Trạng Thái</th>
-            <th>Vị trí hiện tại</th>
+            <th>Trạm Tiếp Theo</th>
             <th>Chi Tiết</th>
-            <th>Chỉnh sửa / Xóa</th>
+            {/* <th>Chỉnh sửa / Xóa</th> */}
           </tr>
         </thead>
         <tbody>
           {list.map((bookItem, key) => (
-            <tr key={key}>
+            <tr key={key} className={updatedId == bookItem.id ? 'bg-primary' : ''}>
               <th scope="row">{bookItem.customerName}</th>
               <td>{bookItem.licensePlate}</td>
               <td>{bookItem.executeTime}</td>
@@ -44,10 +52,10 @@ class BookList extends React.Component {
               <td>
                 <ViewModal {...this.props} bookItem={bookItem} />
               </td>
-              <td>
+              {/* <td>
                 <Button className='btn btn-primary' color="warning">Edit</Button>&nbsp;
                 <Button className='btn btn-primary' color="danger">Remove</Button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>

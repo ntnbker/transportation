@@ -1,7 +1,7 @@
 import { fakeData, DONE_CODE, PASSED_CODE } from './fakeData'
 
 const getBookList = () => {
-  return [...fakeData.bookList]
+  return [...fakeData.bookList.sort((a, b) => b.updated_at - a.updated_at)]
 }
 
 const getBookItem = (id) => {
@@ -22,6 +22,7 @@ const updateBookItem = (id, update) => {
     for (let key in update) {
       fakeBook[key] = update[key]
     }
+    fakeBook.updated_at = Date.now()
     result = fakeBook
     return fakeBook
   })
@@ -39,8 +40,10 @@ const nextStop = (id) => {
   if (!nextRoute) fakeBook.status = DONE_CODE
   else {
     fakeBook.currentLocation = nextRoute.name
+    fakeBook.note = nextRoute.note
   }
   currentRoute.status = PASSED_CODE
+  fakeBook.updated_at = Date.now()
 
   fakeData.bookList = fakeData.bookList.map(book => book.id === fakeBook.id ? fakeBook : book)
   fakeData.routes = fakeData.routes.map(route => route.id === currentRoute.id ? currentRoute : route)
@@ -73,6 +76,11 @@ const login = (params) => {
   let bookItem = bookList.filter(book => book.driverName === driver.name && book.licensePlate === device.licensePlate)[0]
   if (!bookItem) return Promise.reject('Tài xế có được phép truy cập thiết bị')
 
+  let route = fakeData.routes.filter(r => r.book_id === bookItem.id && r.name === bookItem.currentLocation)[0]
+  if (!route) return Promise.reject('something wrong!')
+  let fakeRoute = {...route}
+  bookItem.note = route.note
+  bookItem.route = route
   return Promise.resolve({...bookItem})
 }
 

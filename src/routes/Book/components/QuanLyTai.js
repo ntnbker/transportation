@@ -27,7 +27,7 @@ export default class QuanLyTai extends React.Component {
 
   render() {
     let { device } = this.props
-    let { licensePlate, driverName, currentLocation, status } = device || {}
+    let { licensePlate, driverName, currentLocation, status, note } = device || {}
     return (
       <Row className="text-center" id="quan-ly-tai">
         <Col className="col-6">
@@ -41,6 +41,9 @@ export default class QuanLyTai extends React.Component {
         </Col>
         <Col className="col-6">
           <h3>Trạng Thái: <span className="font-weight-bold">{status}</span></h3>
+        </Col>
+        <Col className="col-12">
+          <h3>Ghi Chú: <span className="font-weight-bold">{note}</span></h3>
         </Col>
         <Col className="col-6 col-sm-4">
           <Button 
@@ -78,15 +81,15 @@ export default class QuanLyTai extends React.Component {
             disabled={status === WAITING_CODE || status === STOP_CODE || status === DONE_CODE} 
             onClick={() => this.triggerNextStop()}
           >
-            Đến Trạm
+            Trạm Tiếp
           </Button>
         </Col>
         <Col className="col-6 col-sm-4">
           <Button 
             disabled={status === WAITING_CODE} 
-            onClick={() => this.updateStatus(STOP_CODE)}
+            onClick={this.props.deviceLogout}
           >
-            Kết Thúc
+            Logout
           </Button>
         </Col>
       </Row>
